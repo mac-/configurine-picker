@@ -266,6 +266,52 @@ describe('Picker Unit Tests', function() {
 		done();
 	});
 
+	it('should pick the the id field of wach entry', function(done) {
+		var appName = 'app1',
+			appVersion = '1.0.0',
+			envName = 'dev',
+			names = ['name1', 'name2'],
+			mockConfigurineResults = [
+				{
+					id: '519bc51c9b9c05f772000001',
+					name: 'name1',
+					value: 'fnord2',
+					associations: {
+						applications: [],
+						environments: ['dev']
+					}
+				},
+				{
+					id: '519bc51c9b9c05f772000002',
+					name: 'name2',
+					value: 'fnord3',
+					associations: {
+						applications: [
+							{
+								name: 'app1',
+								versions: ['1.0.0', '2.0.0']
+							}
+						],
+						environments: []
+					}
+				}
+			];
+
+		var config = picker({
+			names: names,
+			appName: appName,
+			appVersion: appVersion,
+			environmentName: envName,
+			associationPriority: 'app',
+			entries: mockConfigurineResults,
+			pickField: 'id'
+		});
+		
+		assert.strictEqual(config.name1, '519bc51c9b9c05f772000001');
+		assert.strictEqual(config.name2, '519bc51c9b9c05f772000002');
+		done();
+	});
+
 	it('should return an empty object when no names are provided', function(done) {
 		var appName = 'app1',
 			appVersion = '1.0.0',
