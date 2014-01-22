@@ -1,0 +1,43 @@
+{
+	"name": "configurine-picker",
+	"description": "Logic for picking config values based on a given app name, app version, and environment name fron configurine",
+	"contributors": [
+		"Mac Angell <mac.ang311@gmail.com>"
+	],
+	"version": "0.0.1",
+	"dependencies": {
+		"underscore": "1.x.x"
+	},
+	"devDependencies": {
+		"mocha": "1.x.x",
+		"jshint": "2.x.x",
+		"travis-cov": "0.2.x",
+		"blanket": "1.0.x",
+		"rewire": "2.x.x",
+		"coveralls": "2.x.x",
+		"mocha-lcov-reporter": "0.x.x"
+	},
+	"keywords": [
+		"config"
+	],
+	"engines": {
+		"node": ">=0.10.0"
+	},
+	"main": "./lib/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mac-/configurine-picker"
+	},
+	"scripts": {
+		"test": "make test && make test-cov && make test-lcov | ./node_modules/coveralls/bin/coveralls.js",
+		"blanket": {
+			"pattern": "//^((?!\/node_modules\/)(?!\/test\/).)*$/ig",
+			"onlyCwd": true,
+			"data-cover-flags": {
+				"branchTracking": true
+			}
+		},
+		"travis-cov": { "threshold": 100 }
+	},
+	"license": "MIT"
+}
