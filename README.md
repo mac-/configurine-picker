@@ -30,12 +30,12 @@ This module takes a set of config entries and filters them down to one of each n
 
 The function exported by this module takes one `options` paramter and returns an object that contains the names provided and the corresponding values that were picked. The expected properties on the `options` object are:
 
-* `appName` - the name of the application to match on
-* `appVersion` - the version of the application to match on
-* `environmentName` - the name of the environment to match on
+* `appName` - the name of the application to match on (required)
+* `appVersion` - the version of the application to match on (required)
+* `environmentName` - the name of the environment to match on (required)
 * `names` - an array of strings that represent the names of the config entries pick for
 * `associationPriority` - tells the picker which association to give priority to: 'app' or 'env'. Defaults to 'app'
-* `entries` - the collection of config entries from configurine to pick from
+* `entries` - the collection of config entries from configurine to pick from (required)
 
 Example:
 
